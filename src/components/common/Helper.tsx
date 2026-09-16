@@ -3,6 +3,26 @@ export interface NavLinkItem {
   href: string
 }
 
+export const getDownloadAppUrl = (): string => {
+  if (typeof window === 'undefined') return 'https://play.google.com/store'
+
+  const userAgent = window.navigator.userAgent.toLowerCase()
+  const platform = (window.navigator as unknown as { userAgentData?: { platform?: string } }).userAgentData?.platform?.toLowerCase() || ''
+
+  // Detect iPhone, iPad, iPod, MacBook, macOS
+  const isApple =
+    /iphone|ipad|ipod|macintosh|mac os x/.test(userAgent) ||
+    /mac|ios/.test(platform) ||
+    (typeof navigator !== 'undefined' && navigator.maxTouchPoints > 1 && /mac/.test(userAgent))
+
+  if (isApple) {
+    return 'https://www.apple.com/app-store/'
+  }
+
+  // Windows, Android, others
+  return 'https://play.google.com/store'
+}
+
 export const NAV_LINKS: NavLinkItem[] = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '#services' },

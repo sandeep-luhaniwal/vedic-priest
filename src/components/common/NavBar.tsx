@@ -3,12 +3,18 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { NAV_LINKS } from './Helper'
+import { NAV_LINKS, getDownloadAppUrl } from './Helper'
 import { MenuIcon, CloseIcon } from './Icon'
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [activeLink, setActiveLink] = useState<string>('/') // 'Home' is active by default
+  const [downloadUrl, setDownloadUrl] = useState<string>('https://play.google.com/store')
+
+  // Detect iOS/Mac vs Windows/Android on client
+  useEffect(() => {
+    setDownloadUrl(getDownloadAppUrl())
+  }, [])
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev)
@@ -173,13 +179,14 @@ const NavBar: React.FC = () => {
 
           {/* Right CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <Link
-              href="#download"
-              onClick={(e) => handleNavClick(e, '#download')}
+            <a
+              href={downloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center justify-center rounded-[55px] bg-primary-orange px-5 py-2.5 text-[15px] lg:text-[16px] font-medium text-white transition-all duration-300 hover:bg-black hover:text-white shadow-sm"
             >
               Download App
-            </Link>
+            </a>
 
             {/* Mobile Hamburger Button */}
             <button
@@ -259,16 +266,15 @@ const NavBar: React.FC = () => {
 
           {/* Full Width Download Button */}
           <div className="pt-8">
-            <Link
-              href="#download"
-              onClick={(e) => {
-                handleNavClick(e, '#download')
-                closeMenu()
-              }}
+            <a
+              href={downloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
               className="flex w-full items-center justify-center rounded-[55px] bg-primary-orange py-3.5 text-center text-[18px] font-semibold text-white shadow-md transition-all duration-300 hover:bg-black active:scale-[0.99]"
             >
               Download App
-            </Link>
+            </a>
           </div>
         </div>
       </div>
