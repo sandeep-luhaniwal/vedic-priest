@@ -20,10 +20,14 @@
   --color-dark-black: rgba(0, 0, 0, 0.65);
 }
 
+*{
+  scroll-behavior: smooth !important;
+}
+
 body {
   background: #ffffff;
   color: #000000;
-  font-family: var(--font-outfit), Arial, sans-serif;
+  font-family: var(--font-outfit), sans-serif;
 }
 
 /* Custom 1332px Container with px-4 */
@@ -48,5 +52,17 @@ body {
 .animate-spin-20s {
   animation: spinSlow 20s linear infinite;
   will-change: transform;
+}
+
+/* Swiper Equal Height Slides */
+.swiper-equal-height .swiper-wrapper {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.swiper-equal-height .swiper-slide {
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 

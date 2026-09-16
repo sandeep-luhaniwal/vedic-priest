@@ -15,7 +15,7 @@ const SpiritualCompanion: React.FC = () => {
   const slides = [...APP_SCREENS_SLIDER_DATA, ...APP_SCREENS_SLIDER_DATA]
 
   return (
-    <section className="w-full bg-white py-12 md:py-[70px] overflow-hidden">
+    <section className="w-full bg-white py-12 md:py-14 lg:py-17.5 overflow-hidden">
       {/* 1600px max-width container as instructed */}
       <div className="w-full max-w-[1600px] mx-auto px-4">
         {/* Section Header (Centered, 42px Heading) */}
@@ -23,7 +23,7 @@ const SpiritualCompanion: React.FC = () => {
           <Heading
             size="default"
             as="h2"
-            className="text-black font-extrabold tracking-tight leading-tight"
+            className="text-black "
           >
             Your Spiritual Companion,
             <br />
@@ -33,14 +33,14 @@ const SpiritualCompanion: React.FC = () => {
           <Paragraph
             size="base"
             color="darkblack"
-            className="mt-3 text-[15px] md:text-[16px] text-black/65 font-normal leading-relaxed text-center max-w-xl mx-auto"
+            className="pt-4 md:pt-5 font-normal text-center max-w-md mx-auto"
           >
             A structured verification experience helps bring trusted professionals and devotees together.
           </Paragraph>
         </div>
 
         {/* 1600px Swiper Slider (Centered Slide 1, No dots, Proper Autoplay, No hover zoom) */}
-        <div className="mt-[44px] w-full">
+        <div className="pt-8 md:pt-10 lg:pt-11 w-full">
           <Swiper
             modules={[Autoplay]}
             spaceBetween={20}
@@ -90,7 +90,7 @@ const SpiritualCompanion: React.FC = () => {
           >
             {slides.map((screen, index) => (
               <SwiperSlide key={`${screen.id}-${index}`} className="flex justify-center items-center">
-                <div className="relative w-full max-w-[245px]">
+                <div className="relative w-full max-w-61.25">
                   <Image
                     src={screen.image}
                     alt={screen.title}

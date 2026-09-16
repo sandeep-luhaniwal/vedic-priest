@@ -58,7 +58,7 @@ const variantClasses: Record<ButtonVariant, string> = {
 
   // Dark orange variant
   darkorange:
-    'bg-[#F55300] text-white hover:bg-black hover:text-white',
+    'bg-dark-orange text-white hover:bg-black hover:text-white',
 }
 
 const fontClasses: Record<ButtonFontSize, string> = {

@@ -55,7 +55,7 @@ const Heading: React.FC<HeadingProps> = ({
 
   return (
     <Component
-      className={`leading-[130%] font-bold ${sizeStyle} ${colorStyle} ${className}`.trim()}
+      className={`leading-[110%] font-bold ${sizeStyle} ${colorStyle} ${className}`.trim()}
       {...props}
     >
       {text || children}

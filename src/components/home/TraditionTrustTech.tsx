@@ -5,14 +5,14 @@ import { TRADITION_PILLARS } from '../common/Helper'
 
 const TraditionTrustTech: React.FC = () => {
   return (
-    <section className="w-full bg-[#F55300] py-10 sm:py-12 md:py-[70px]">
+    <section id="about-us" className="w-full bg-dark-orange py-12 md:py-14 lg:py-17.5">
       <div className="custom-container">
         {/* Section Heading (42px) */}
-        <div className="text-center mb-8 md:mb-11">
+        <div className="text-center pb-8 md:pb-11">
           <Heading
             size="default"
             as="h2"
-            className="text-white font-bold tracking-tight leading-tight"
+            className="text-white"
           >
             Tradition. Trust. Technology.
           </Heading>
@@ -30,19 +30,19 @@ const TraditionTrustTech: React.FC = () => {
                 }`}
               >
                 {/* Step / Number */}
-                <span className="text-[16px] font-semibold text-white/65 leading-none">
+                <span className="text-base font-semibold text-white/65 leading-none">
                   {pillar.id}
                 </span>
 
                 {/* Pillar Title */}
-                <h3 className="mt-3 text-[20px] font-bold text-white leading-snug">
+                <h3 className="pt-4 md:pt-5 text-base md:text-lg lg:text-xl font-bold text-white leading-snug">
                   {pillar.title}
                 </h3>
 
                 {/* Pillar Description */}
                 <Paragraph
-                  size="sm"
-                  className="mt-2 text-[16px] font-normal leading-relaxed text-white/85"
+                  size="base"
+                  className="pt-2 md:pt-3 font-normal text-white/85"
                 >
                   {pillar.description}
                 </Paragraph>

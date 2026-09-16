@@ -213,7 +213,7 @@ export const ASTROLOGERS_DATA: AstrologerItem[] = [
     role: 'Verified Astrologer',
     status: 'Online',
     rate: '₹49/min',
-    image: '/images/webp/astrologer-1.jpg',
+    image: '/images/webp/astrologer_1.webp',
   },
   {
     id: '02',
@@ -221,7 +221,7 @@ export const ASTROLOGERS_DATA: AstrologerItem[] = [
     role: 'Verified Astrologer',
     status: 'Online',
     rate: '₹39/min',
-    image: '/images/webp/astrologer-2.jpg',
+    image: '/images/webp/astrologer_2.webp',
   },
   {
     id: '03',
@@ -229,7 +229,7 @@ export const ASTROLOGERS_DATA: AstrologerItem[] = [
     role: 'Verified Astrologer',
     status: 'Online',
     rate: '₹59/min',
-    image: '/images/webp/astrologer-3.jpg',
+    image: '/images/webp/astrologer_3.webp',
   },
 ]
 
@@ -337,27 +337,27 @@ export const SACRED_ESSENTIALS_DATA: SacredEssentialItem[] = [
   {
     id: '01',
     title: 'Pooja Kits',
-    image: '/images/png/home_1.png',
+    image: '/images/png/home_5.png',
   },
   {
     id: '02',
     title: 'Brass Diyas',
-    image: '/images/png/home_2.png',
+    image: '/images/png/home_1.png',
   },
   {
     id: '03',
     title: 'Havan Samagri',
-    image: '/images/png/home_3.png',
+    image: '/images/png/home_2.png',
   },
   {
     id: '04',
     title: 'Spritual Books',
-    image: '/images/png/home_4.png',
+    image: '/images/png/home_3.png',
   },
   {
     id: '05',
     title: 'Festivals Essentials',
-    image: '/images/png/home_5.png',
+    image: '/images/png/home_4.png',
   },
 ]
 

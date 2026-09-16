@@ -5,7 +5,7 @@ import Paragraph from '../common/Paragraph'
 
 const BringPoojaHome: React.FC = () => {
   return (
-    <section className="w-full bg-[#F55300] py-12 md:py-[70px]">
+    <section className="w-full bg-dark-orange py-12 md:py-14 lg:py-17.5">
       <div className="custom-container">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
           {/* Left Content Column */}
@@ -14,7 +14,7 @@ const BringPoojaHome: React.FC = () => {
             <Heading
               size="default"
               as="h2"
-              className="text-white font-extrabold tracking-tight leading-tight"
+              className="text-white"
             >
               Bring the Pooja Home.
             </Heading>
@@ -22,7 +22,7 @@ const BringPoojaHome: React.FC = () => {
             {/* Subtitle */}
             <Paragraph
               size="base"
-              className="mt-4 max-w-lg text-[15px] md:text-[16px] text-white/85 font-normal leading-relaxed"
+              className="pt-4 md:pt-5 max-w-md text-white/65 font-normal"
             >
               Join sacred rituals streamed live from temples across India, or host one for your own family occasion.
             </Paragraph>
@@ -31,7 +31,7 @@ const BringPoojaHome: React.FC = () => {
             <div className="mt-8">
               <Link
                 href="#live-pooja"
-                className="inline-flex items-center justify-center rounded-[55px] border border-white bg-transparent px-6 py-2.5 text-[15px] font-medium text-white transition-all duration-300 hover:bg-white hover:text-[#F55300] shadow-sm active:scale-95"
+                className="inline-flex items-center justify-center rounded-[55px] border border-white bg-transparent px-6 py-2.5 text-sm md:text-base font-medium text-white transition-all duration-300 hover:bg-white hover:text-dark-orange shadow-sm active:scale-95"
               >
                 Join Live Pooja
               </Link>
@@ -40,7 +40,7 @@ const BringPoojaHome: React.FC = () => {
 
           {/* Right Live Video Player Column */}
           <div className="flex w-full items-center justify-center lg:w-1/2">
-            <div className="relative w-full max-w-[540px] overflow-hidden rounded-[16px] shadow-2xl transition-transform duration-500 hover:scale-[1.01] bg-black">
+            <div className="relative w-full overflow-hidden rounded-lg shadow-2xl transition-transform duration-500 bg-black">
               {/* Video Element */}
               <video
                 src="/images/video/pooja.mp4"
@@ -48,7 +48,7 @@ const BringPoojaHome: React.FC = () => {
                 loop
                 muted
                 playsInline
-                className="h-[320px] sm:h-[360px] md:h-[380px] w-full object-cover"
+                className="h-80 sm:h-90 md:h-95 w-full object-cover"
               />
 
               {/* Top Left: Live Now Badge */}
@@ -63,11 +63,11 @@ const BringPoojaHome: React.FC = () => {
               </div>
 
               {/* Bottom Gradient Overlay with Katha Info */}
-              <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-5 pt-12 text-left">
-                <h3 className="text-[18px] md:text-[20px] font-bold text-white leading-snug">
+              <div className="absolute bottom-0 left-0 right-0 z-10 bg-linear-to-t from-black/90 via-black/50 to-transparent p-5 pt-20 text-left">
+                <h3 className="text-lg md:text-xl font-bold text-white">
                   Satyanarayan Katha
                 </h3>
-                <p className="mt-1 text-[13px] md:text-[14px] text-white/85 font-normal">
+                <p className="mt-1 text-sm md:text-base text-white/85 font-normal">
                   Pandit Rajesh Sharma • 124 devotees joined
                 </p>
               </div>

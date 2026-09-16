@@ -1,6 +1,6 @@
 import React from 'react'
 
-export type ParagraphSize = 'xs' | 'sm' | 'base' | 'md' | 'xl' | 'default'
+export type ParagraphSize = 'xs' | 'sm' | 'base' | 'lg' | 'xl' | 'default'
 
 export type ParagraphColor =
   | 'black'
@@ -27,8 +27,8 @@ const sizeClasses: Record<ParagraphSize, string> = {
   xs: 'text-[12px]',
   sm: 'text-[14px]',
   base: 'text-[14px] md:text-[16px]',
-  md: 'text-[16px] md:text-[18px]',
-  xl: 'text-[18px] md:text-[20px]',
+  lg: 'text-[16px] md:text-[18px]',
+  xl: 'text-base md:text-lg lg:text-xl',
   default: 'text-[20px] md:text-[22px] lg:text-[24px]',
 }
 

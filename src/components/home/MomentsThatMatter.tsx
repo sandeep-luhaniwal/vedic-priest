@@ -3,16 +3,15 @@
 import React from 'react'
 import Image from 'next/image'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination } from 'swiper/modules'
+import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
-import 'swiper/css/pagination'
 
 import Heading from '../common/Heading'
 import { TESTIMONIALS_DATA } from '../common/Helper'
 
 const StarIcon: React.FC = () => (
   <svg
-    className="w-4 h-4 text-[#FA891A] fill-[#FA891A]"
+    className="w-4 h-4 text-[#FFD205] fill-[#FFD205]"
     viewBox="0 0 20 20"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -22,33 +21,29 @@ const StarIcon: React.FC = () => (
 
 const MomentsThatMatter: React.FC = () => {
   return (
-    <section className="w-full bg-[#FCF8F8] py-12 md:py-[70px] overflow-hidden">
+    <section className="w-full bg-light-white py-12 md:py-14 lg:py-17.5 overflow-hidden">
       <div className="custom-container">
         {/* Section Heading (42px) */}
         <div className="flex flex-col">
           <Heading
             size="default"
             as="h2"
-            className="text-black font-extrabold tracking-tight leading-tight"
+            className="text-black"
           >
             Moments That Matter
           </Heading>
         </div>
 
         {/* Swiper Slider Container (44px gap) */}
-        <div className="mt-[44px]">
+        <div className="pt-8 md:pt-10 lg:pt-11">
           <Swiper
-            modules={[Autoplay, Pagination]}
+            modules={[Autoplay]}
             spaceBetween={24}
             slidesPerView={1}
             loop={true}
             autoplay={{
               delay: 4000,
               disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-              dynamicBullets: true,
             }}
             breakpoints={{
               640: {
@@ -60,21 +55,21 @@ const MomentsThatMatter: React.FC = () => {
                 spaceBetween: 24,
               },
             }}
-            className="pb-12"
+            className="swiper-equal-height py-1"
           >
             {TESTIMONIALS_DATA.map((item) => (
-              <SwiperSlide key={item.id} className="h-auto">
-                <div className="flex h-full flex-col justify-between rounded-[10px] bg-white p-6 sm:p-7 border border-black/[0.06] shadow-[0_0_8px_rgba(0,0,0,0.06)] hover:shadow-md transition-all duration-300 min-h-[190px]">
+              <SwiperSlide key={item.id} className="h-auto! flex! flex-col!">
+                <div className="flex h-full w-full flex-1 flex-col justify-between rounded-[10px] bg-white p-6 sm:p-7 border border-black/8 shadow-[0_0_8px_rgba(0,0,0,0.06)] hover:shadow-md transition-all duration-300">
                   {/* Testimonial Quote */}
-                  <p className="text-[14px] sm:text-[15px] text-black/75 font-normal leading-relaxed">
+                  <p className="text-[14px] sm:text-[15px] text-black/75 font-normal">
                     “{item.quote}”
                   </p>
 
                   {/* Author Info & Star Rating */}
-                  <div className="mt-6 flex items-center justify-between border-t border-black/[0.04] pt-4">
+                  <div className="mt-6 flex items-center justify-between">
                     {/* Author Profile */}
                     <div className="flex items-center gap-3">
-                      <div className="relative h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0 overflow-hidden rounded-full ring-1 ring-black/10">
+                      <div className="relative h-9 w-9 sm:h-10 sm:w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-black/10">
                         <Image
                           src={item.avatar}
                           alt={item.name}
@@ -83,7 +78,7 @@ const MomentsThatMatter: React.FC = () => {
                           sizes="40px"
                         />
                       </div>
-                      <span className="text-[14px] sm:text-[15px] font-bold text-black font-sans">
+                      <span className="text-sm md:text-base font-bold text-black font-sans">
                         {item.name}
                       </span>
                     </div>
