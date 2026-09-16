@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import { NAV_LINKS, getDownloadAppUrl } from './Helper'
 import { MenuIcon, CloseIcon } from './Icon'
 
@@ -10,6 +11,9 @@ const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [activeLink, setActiveLink] = useState<string>('/') // 'Home' is active by default
   const [downloadUrl, setDownloadUrl] = useState<string>('https://play.google.com/store')
+
+  const pathname = usePathname()
+  const router = useRouter()
 
   // Detect iOS/Mac vs Windows/Android on client
   useEffect(() => {
@@ -36,11 +40,25 @@ const NavBar: React.FC = () => {
     }
   }, [isOpen])
 
-  // Smooth scroll handler with exact navbar offset
+  // Smooth scroll handler with exact navbar offset & cross-page routing
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string
   ) => {
+    if (pathname !== '/') {
+      if (href === '/') {
+        e.preventDefault()
+        router.push('/')
+        return
+      }
+      if (href.startsWith('#')) {
+        e.preventDefault()
+        router.push('/' + href)
+        return
+      }
+      return
+    }
+
     e.preventDefault()
     if (href === '/') {
       window.scrollTo({
@@ -69,8 +87,13 @@ const NavBar: React.FC = () => {
     }
   }
 
-  // ScrollSpy: Update active link on scroll based on section in view
+  // ScrollSpy: Update active link on scroll based on section in view (only on homepage)
   useEffect(() => {
+    if (pathname !== '/') {
+      setActiveLink('')
+      return
+    }
+
     const handleScroll = () => {
       // If at top of the page, activate '/' (Home)
       if (window.scrollY < 120) {
@@ -116,7 +139,7 @@ const NavBar: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [pathname])
 
   return (
     <>
