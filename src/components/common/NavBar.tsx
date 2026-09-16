@@ -30,30 +30,65 @@ const NavBar: React.FC = () => {
     }
   }, [isOpen])
 
+  // Smooth scroll handler with exact navbar offset
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault()
+    if (href === '/') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+      setActiveLink('/')
+      return
+    }
+
+    if (href.startsWith('#')) {
+      const targetId = href.substring(1)
+      const element = document.getElementById(targetId)
+      if (element) {
+        const headerEl = document.querySelector('header')
+        const headerHeight = headerEl ? headerEl.offsetHeight : 80
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 16
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        })
+        setActiveLink(href)
+      }
+    }
+  }
+
   // ScrollSpy: Update active link on scroll based on section in view
   useEffect(() => {
     const handleScroll = () => {
-      // If near bottom of the page, activate #support (Footer)
+      // If at top of the page, activate '/' (Home)
+      if (window.scrollY < 120) {
+        setActiveLink('/')
+        return
+      }
+
+      // If at the absolute bottom of the page, activate '#support'
       if (
         window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 120
+        document.documentElement.scrollHeight - 30
       ) {
         setActiveLink('#support')
         return
       }
 
-      // If at top of the page, activate '/' (Home)
-      if (window.scrollY < 150) {
-        setActiveLink('/')
-        return
-      }
-
-      const scrollPosition = window.scrollY + 220
+      const headerEl = document.querySelector('header')
+      const headerHeight = headerEl ? headerEl.offsetHeight : 80
+      const scrollPosition = window.scrollY + headerHeight + 50
 
       const sectionMap = [
         { id: 'support', href: '#support' },
-        { id: 'services', href: '#services' },
         { id: 'about-us', href: '#about-us' },
+        { id: 'services', href: '#services' },
         { id: 'home', href: '/' },
       ]
 
@@ -82,7 +117,14 @@ const NavBar: React.FC = () => {
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md shadow-[0_2px_5px_rgba(0,0,0,0.08)]">
         <div className="custom-container py-4 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="inline-flex items-center gap-2" onClick={closeMenu}>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2"
+            onClick={(e) => {
+              handleNavClick(e, '/')
+              closeMenu()
+            }}
+          >
             {/* Desktop / Main Logo */}
             <div className="hidden sm:block">
               <Image
@@ -116,7 +158,7 @@ const NavBar: React.FC = () => {
                 <Link
                   key={index}
                   href={item.href}
-                  onClick={() => setActiveLink(item.href)}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={`text-[16px] lg:text-[18px] transition-all duration-200 select-none ${
                     isActive
                       ? 'font-bold text-black'
@@ -133,6 +175,7 @@ const NavBar: React.FC = () => {
           <div className="flex items-center gap-3">
             <Link
               href="#download"
+              onClick={(e) => handleNavClick(e, '#download')}
               className="hidden sm:inline-flex items-center justify-center rounded-[55px] bg-primary-orange px-5 py-2.5 text-[15px] lg:text-[16px] font-medium text-white transition-all duration-300 hover:bg-black hover:text-white shadow-sm"
             >
               Download App
@@ -161,7 +204,14 @@ const NavBar: React.FC = () => {
       >
         {/* Mobile Header Bar */}
         <div className="custom-container py-4 flex items-center justify-between border-b border-black/10">
-          <Link href="/" onClick={closeMenu} className="inline-flex items-center">
+          <Link
+            href="/"
+            onClick={(e) => {
+              handleNavClick(e, '/')
+              closeMenu()
+            }}
+            className="inline-flex items-center"
+          >
             <Image
               src="/images/svg/mobile-logo.svg"
               alt="VedicPriest Mobile Logo"
@@ -191,8 +241,8 @@ const NavBar: React.FC = () => {
                 <Link
                   key={index}
                   href={item.href}
-                  onClick={() => {
-                    setActiveLink(item.href)
+                  onClick={(e) => {
+                    handleNavClick(e, item.href)
                     closeMenu()
                   }}
                   className={`text-[20px] transition-colors duration-200 select-none ${
@@ -211,7 +261,10 @@ const NavBar: React.FC = () => {
           <div className="pt-8">
             <Link
               href="#download"
-              onClick={closeMenu}
+              onClick={(e) => {
+                handleNavClick(e, '#download')
+                closeMenu()
+              }}
               className="flex w-full items-center justify-center rounded-[55px] bg-primary-orange py-3.5 text-center text-[18px] font-semibold text-white shadow-md transition-all duration-300 hover:bg-black active:scale-[0.99]"
             >
               Download App

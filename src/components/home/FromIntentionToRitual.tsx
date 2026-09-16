@@ -5,7 +5,7 @@ import { INTENTION_STEPS } from '../common/Helper'
 
 const FromIntentionToRitual: React.FC = () => {
   return (
-    <section className="w-full bg-light-white py-12 md:py-14 lg:py-17.5">
+    <section id="about-us" className="w-full bg-light-white py-12 md:py-14 lg:py-17.5">
       <div className="custom-container">
         {/* 42px Section Heading */}
         <div className="text-center">

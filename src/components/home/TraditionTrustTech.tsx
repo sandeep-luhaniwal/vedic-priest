@@ -5,7 +5,7 @@ import { TRADITION_PILLARS } from '../common/Helper'
 
 const TraditionTrustTech: React.FC = () => {
   return (
-    <section id="about-us" className="w-full bg-dark-orange py-12 md:py-14 lg:py-17.5">
+    <section className="w-full bg-dark-orange py-12 md:py-14 lg:py-17.5">
       <div className="custom-container">
         {/* Section Heading (42px) */}
         <div className="text-center pb-8 md:pb-11">

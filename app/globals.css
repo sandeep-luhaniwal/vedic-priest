@@ -20,8 +20,8 @@
   --color-dark-black: rgba(0, 0, 0, 0.65);
 }
 
-*{
-  scroll-behavior: smooth !important;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
